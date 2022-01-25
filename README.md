@@ -1,6 +1,6 @@
 ## Weather APP
 
-<h2> Bienvenido😄 <h2>
+Bienvenido😄
 
 ```js
 
