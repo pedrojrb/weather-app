@@ -1,34 +1,36 @@
 const inquirer = require('inquirer');
 const {handlerMessage} = require ('./header/welcome')
 
-//Options menu instance
 
-const menu = [
-
-    {
-        type: 'list',
-        name: 'optionsMenu',
-        message: 'SELECCIONE UNA OPCION \n',
-        choices: [
-            {
-                value : 1,
-                name : `1. Buscar ciudad`
-            },
-            {
-                value : 2,
-                name : `2. Ver Historial`
-            },
-            {
-                value : 0,
-                name : `0. Salir`
-            }
-        ]  
-    }
-]
 
 //Instance functions with inquirer module
 
 const readMenu = async() => {
+
+    //Options menu instance
+
+    const menu = [
+
+        {
+            type: 'list',
+            name: 'optionsMenu',
+            message: 'SELECCIONE UNA OPCION \n',
+            choices: [
+                {
+                    value : 1,
+                    name : `1. Buscar ciudad`
+                },
+                {
+                    value : 2,
+                    name : `2. Ver Historial`
+                },
+                {
+                    value : 0,
+                    name : `0. Salir`
+                }
+            ]  
+        }
+    ]
 
     handlerMessage()
 
@@ -40,7 +42,7 @@ const readMenu = async() => {
 const handlePause = async() => {
 
     //Instance pause options for first inquirer.prompt argument
-    
+
     const pauseOpt = [
         {
             type: 'input',
@@ -55,7 +57,33 @@ const handlePause = async() => {
 
 }
 
+const readInput = async () => {
+
+    const question = [
+
+        {
+            type : 'input',
+            name : 'place',
+            message: 'Ciudad: ',
+            validate(value){
+
+                if (value.length === 0){
+
+                    return`Debe ingresar una ciudad`.red
+                }
+
+                return true
+            }
+        }
+    ]
+
+    const { place } = await inquirer.prompt(question)
+    
+    return place
+}
+
 module.exports = {
     readMenu,
-    handlePause
+    handlePause,
+    readInput
 }
