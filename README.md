@@ -2,6 +2,8 @@
 
 <h2> Bienvenido😄 <h2>
 
+```js
+
 <script>
 
 const App = {
@@ -10,6 +12,8 @@ const App = {
 }
 
 </script>
+
+```
 
 
 En este proyecto podras consultar el clima <br> de cualquier ciudad del mundo🗺.
