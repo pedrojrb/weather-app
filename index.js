@@ -1,5 +1,5 @@
 const { readMenu, handlePause, readInput, selectOption } = require('./helpers/inquirer');
-const Busquedas = require('./models/search');
+const Busquedas = require('./models/searchObj');
 require('colors')
 
 
@@ -23,7 +23,9 @@ const main = async () => {
                 const data = await search.city(place)
                 const option = await selectOption(data.features)
 
-                if (!option){ await handlePause() }
+                /* search.history.push(place) */
+
+                if (!option || option === 0){ await handlePause() }
 
 
                 //Search places

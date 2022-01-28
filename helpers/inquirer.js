@@ -62,6 +62,8 @@ const selectOption = async (array = []) => {
         }
     ]
 
+    options[0].choices.push({value: 0, name: `6 `.green + `Cancelar`})
+    
     const { optionsPlaces } = await inquirer.prompt(options)
 
     return optionsPlaces
@@ -103,7 +105,7 @@ const readInput = async () => {
                     return `Debe ingresar una ciudad`.red
                     
                 }
-
+                
                 return true
             }
         }
