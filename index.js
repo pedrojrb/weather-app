@@ -1,4 +1,4 @@
-const { readMenu, handlePause, readInput } = require('./helpers/inquirer');
+const { readMenu, handlePause, readInput, selectOption } = require('./helpers/inquirer');
 const Busquedas = require('./models/search');
 require('colors')
 
@@ -21,7 +21,10 @@ const main = async () => {
             case 1:
                 const place = await readInput()
                 const data = await search.city(place)
-                console.log(data)
+                const option = await selectOption(data.features)
+
+                if (!option){ await handlePause() }
+
 
                 //Search places
                 //Show results of places

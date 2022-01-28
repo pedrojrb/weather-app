@@ -10,7 +10,6 @@ class Busquedas {
     async city(place = '') {
 
         //HTTP request
-
         return await getPlace (place)
     }
 

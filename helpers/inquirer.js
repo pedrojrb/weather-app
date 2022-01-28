@@ -39,6 +39,35 @@ const readMenu = async() => {
     return optionsMenu;
 }
 
+const selectOption = async (array = []) => {
+
+    if ( array.length === 0){
+        console.log(`No se encontraron resultados`.red)
+        return false
+    }
+
+    const options = 
+    [
+        {
+            type: 'list',
+            name: 'optionsPlaces',
+            message: 'SELECCIONE UNA CIUDAD \n'.green,
+            choices: array.map((el, idx) => {
+                
+                return {
+                    value : el.id,
+                    name : `${idx + 1} `.green + `${el.place_name}`
+                }
+            })
+        }
+    ]
+
+    const { optionsPlaces } = await inquirer.prompt(options)
+
+    return optionsPlaces
+
+}
+
 const handlePause = async() => {
 
     //Instance pause options for first inquirer.prompt argument
@@ -88,5 +117,6 @@ const readInput = async () => {
 module.exports = {
     readMenu,
     handlePause,
-    readInput
+    readInput,
+    selectOption
 }
