@@ -1,11 +1,12 @@
 const axios = require('axios').default
 const instance  = require('../config/axios')
 
-const getPlace = async ( path, queryString ) => {
+const getPlace = async ( place ) => {
 
     try{
 
-        const response = await instance.get(`${path}${queryString}`)
+        const response = await instance.get(`${place}.json`)
+        
         return response.data
 
     }catch(err){
