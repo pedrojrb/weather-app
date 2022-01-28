@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const instance = axios.create({
-    baseURL: 'https://reqres.in/'
+    baseURL: 'https://api.mapbox.com/geocoding/v5/mapbox.places/'
 
 })
 

@@ -67,9 +67,12 @@ const readInput = async () => {
             message: 'Ciudad: ',
             validate(value){
 
-                if (value.length === 0){
+                let regex = /[A-Z]/gi
+                
+                if (value.length === 0 || !regex.test(value)){
 
-                    return`Debe ingresar una ciudad`.red
+                    return `Debe ingresar una ciudad`.red
+                    
                 }
 
                 return true

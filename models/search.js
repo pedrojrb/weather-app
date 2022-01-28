@@ -1,4 +1,5 @@
 const { getPlace } = require('../services/searchPlaces');
+require('dotenv').config()
 
 class Busquedas {
 
@@ -7,8 +8,8 @@ class Busquedas {
     }
 
     async city(place = '') {
-        return await getPlace ('api/users?page=2')
-        /* console.log('ciudad:', place) */
+
+        return await getPlace (`${place}.json?`,`${process.env.QUERYSTRING_MAPBOX}${process.env.MAPBOX_TOKEN}`)
     }
 
 }
