@@ -20,7 +20,8 @@ const main = async () => {
 
             case 1:
                 const place = await readInput()
-                console.log(place)
+                const data = await search.city(place)
+                console.log(data)
 
                 //Search places
                 //Show results of places

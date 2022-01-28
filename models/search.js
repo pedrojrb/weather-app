@@ -1,12 +1,14 @@
+const { getPlace } = require('../services/searchPlaces');
+
 class Busquedas {
 
     constructor(history = []){
         this.history = history
     }
 
-    async searchCity(place = '') {
-
-        console.log(place)
+    async city(place = '') {
+        return await getPlace ('api/users?page=2')
+        /* console.log('ciudad:', place) */
     }
 
 }
