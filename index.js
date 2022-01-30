@@ -1,4 +1,6 @@
+const { saveDB } = require('./helpers/db');
 const { readMenu, handlePause, readInput, selectOption } = require('./helpers/inquirer');
+const { getWeather } = require('./services/searchWeather');
 const Busquedas = require('./models/searchObj');
 require('colors')
 
@@ -20,10 +22,22 @@ const main = async () => {
 
             case 1:
                 const place = await readInput()
-                const data = await search.city(place)
-                const option = await selectOption(data.features)
 
-                /* search.history.push(place) */
+                const data = await search.city(place)
+            
+                const option = await selectOption(data.features)
+              
+                const placeSelection = await data.features.filter(el => el.id === option )
+                
+                const [lon, lat] = await placeSelection[0].center
+
+                const weather = await getWeather(lon, lat)
+
+                console.log(weather)
+
+                //Save searched data
+                /* search.history.push(place)
+                saveDB(search.history) */
 
                 if (!option || option === 0){ await handlePause() }
 

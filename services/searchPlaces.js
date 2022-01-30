@@ -1,5 +1,5 @@
 const axios = require('axios').default
-const instance  = require('../config/axios')
+const { instance } = require('../config/axios')
 
 const getPlace = async ( place ) => {
 
