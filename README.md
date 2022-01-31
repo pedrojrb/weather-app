@@ -7,6 +7,7 @@ Bienvenido😄
 <script>
 
 const App = {
+    state : 'Developing...🛠👨‍💻',
     language : 'Node.js'
 }
 
