@@ -1,4 +1,3 @@
-const { saveDB } = require('./helpers/db');
 const { readMenu, handlePause, readInput, selectOption } = require('./helpers/inquirer');
 const { getWeather } = require('./services/searchWeather');
 const Busquedas = require('./models/searchObj');
@@ -22,46 +21,50 @@ const main = async () => {
         switch(response){
 
             case 1:
+
+                //Show message
                 const place = await readInput()
 
+                //Search Places
                 const data = await search.city(place)
-            
+
+                //Place selection
                 const option = await selectOption(data.features)
-              
-                const placeSelection = await data.features.filter(el => el.id === option )
+
+
+                if (!option || option === 0){ 
+                    
+                    continue; 
                 
-                const [lon, lat] = await placeSelection[0].center
+                } else {
 
-                const weather = await getWeather(lon, lat)
+                    //Select one place and save in const its
+                    const placeSelection = await data.features.filter(el => el.id === option )
 
-                showDataWeather(weather.data)
+                    //Save searched data
+                    search.addHistory(placeSelection[0].text)
 
-                //Save searched data
-                /* search.history.push(place)
-                saveDB(search.history) */
+                    //Destructuration of placeSelection and create instance for latitud and longitud
+                    const [lon, lat] = await placeSelection[0].center
+                    
+                    //Search results
+                    const weather = await getWeather(lon, lat)
+                    
+                    //Show results
+                    showDataWeather(weather.data)
+                }
 
-                if (!option || option === 0){ await handlePause() }
-
-
-                //Search places
-                //Show results of places
-                //Select one place
-                //Weather data
-                // Show results of weather data
-                /* console.log('\n Informacion del lugar \n')
-                console.log('Ciudad: ',)
-                console.log('Latitud: ',)
-                console.log('Longitud: ',)
-                console.log('Temperatura: ',)
-                console.log('Minima: ',)
-                console.log('Maxima: ',) */
             break;
                 
-            /* case 2:
+            case 2:
+                search.history.forEach((el, i) => { 
+                    console.log(`${i + 1}. `.green + `${el}`)
+                })
             break;
 
-            case 0:
-            break; */
+            case 3:
+                response = 0
+            break;
         }
 
         response !== 0
@@ -69,6 +72,7 @@ const main = async () => {
         : false
 
     } while ( response !== 0)
+
     
 }
 
