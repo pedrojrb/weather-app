@@ -2,7 +2,7 @@ const { instanceOpenWeather } = require ("../config/axios");
 
 
 const getWeather = async (lon, lat) => {
-
+    
     try{
 
         const weather = await instanceOpenWeather.get(`weather?lat=${lat}&lon=${lon}`)
@@ -10,7 +10,7 @@ const getWeather = async (lon, lat) => {
         return weather
         
     }catch(err){
-        return err
+        return 'error: ', err
     }
 }
 

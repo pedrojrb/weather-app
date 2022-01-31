@@ -12,7 +12,7 @@ const instance = axios.create({
 })
 
 const instanceOpenWeather = axios.create({
-    baseURL : `api.openweathermap.org/data/2.5/`,
+    baseURL : `https://api.openweathermap.org/data/2.5/`,
     params: {
         'appid' : process.env.OPENWEATHER_KEY,
         'units': 'metric',

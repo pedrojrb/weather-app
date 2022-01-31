@@ -2,6 +2,7 @@ const { saveDB } = require('./helpers/db');
 const { readMenu, handlePause, readInput, selectOption } = require('./helpers/inquirer');
 const { getWeather } = require('./services/searchWeather');
 const Busquedas = require('./models/searchObj');
+const showDataWeather = require('./helpers/showData');
 require('colors')
 
 
@@ -33,7 +34,7 @@ const main = async () => {
 
                 const weather = await getWeather(lon, lat)
 
-                console.log(weather)
+                showDataWeather(weather.data)
 
                 //Save searched data
                 /* search.history.push(place)
