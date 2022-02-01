@@ -16,5 +16,5 @@ const App = {
 ```
 
 
-En este proyecto podras consultar el clima <br> de cualquier ciudad del mundo🗺.
+En este proyecto puedes consultar el clima <br> de cualquier ciudad del mundo🗺
  
