@@ -39,4 +39,6 @@ En este proyecto puedes consultar el clima <br> de cualquier ciudad del mundoðŸ—
     <li>Al finalizar las instalaciones, ejecutamos el ultimo comando: <b>node index</b> </li>
 </ol>
 
+Y esto seria todoðŸ˜„
+
 
