@@ -4,7 +4,7 @@ require('dotenv').config()
 const instance = axios.create({
     baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/`,
     params:{
-        'access_token': process.env.MAPBOX_KEY,
+        'access_token': process.env.NEXT_PUBLIC_MAPBOX_KEY,
         'limit': 5,
         'language': 'es'
     }
@@ -14,7 +14,7 @@ const instance = axios.create({
 const instanceOpenWeather = axios.create({
     baseURL : `https://api.openweathermap.org/data/2.5/`,
     params: {
-        'appid' : process.env.OPENWEATHER_KEY,
+        'appid' : process.env.NEXT_PUBLIC_OPENWEATHER_KEY,
         'units': 'metric',
         'lang' : 'es'
     }
